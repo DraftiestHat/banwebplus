@@ -1,17 +1,18 @@
 package main.java.scraping;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-
 import main.java.structure.Semester;
 import main.java.structure.SemesterAndSubjectCourses;
 import main.java.structure.Subject;
 import main.java.system.io.FileInterface;
 import main.java.system.io.SemesterIO;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Main {
 	/**
@@ -86,7 +87,21 @@ public class Main {
 				// create the scraper and scrape
 				OfferingsScraper scraper = new OfferingsScraper(semester, subject);
 				try {
-					scraper.scrape();
+					//I'm tired of fighting with socket timeouts (yay slow internet), so now I just ignore them 5 times.
+					boolean noSocketTimeout = true;
+					int numSocketTimeout = 0;
+					do {
+						try {
+							scraper.scrape();
+							noSocketTimeout = true;
+						} catch (SocketTimeoutException ste) {
+							noSocketTimeout = false;
+							numSocketTimeout++;
+						}
+						if (numSocketTimeout > 4) {
+							throw new IOException("Got socket timeouts 5 times in a row! Quitting.");
+						}
+					} while(!noSocketTimeout);
 					System.out.println(String.format("scraped %3d courses:  %s",
 							scraper.getScrapedCourses().getClasses().size(), subject.getLongName()));
 				} catch (NoCoursesException e) {

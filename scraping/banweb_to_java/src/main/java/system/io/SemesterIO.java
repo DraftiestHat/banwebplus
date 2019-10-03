@@ -1,13 +1,13 @@
 package main.java.system.io;
 
+import main.java.structure.Semester;
+import main.java.structure.SemesterAndSubjectCourses;
+import main.java.structure.Subject;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.List;
-
-import main.java.structure.Semester;
-import main.java.structure.SemesterAndSubjectCourses;
-import main.java.structure.Subject;
 
 /**
  * Defines methods to perform I/O on Semester related functionality, including
@@ -19,7 +19,7 @@ public class SemesterIO {
 
 	/**
 	 * @param preferredSystemInterfaceClass
-	 *            A {@link #SystemInterface} class with an argument-less
+	 *            A {@link SystemInterface} class with an argument-less
 	 *            constructor.
 	 * @throws IllegalArgumentException
 	 *             If the given preferredSystemInterfaceClass is invalid.

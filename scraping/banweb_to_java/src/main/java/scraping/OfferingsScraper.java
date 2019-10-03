@@ -1,18 +1,17 @@
 package main.java.scraping;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
+import main.java.structure.Clazz;
+import main.java.structure.Semester;
+import main.java.structure.SemesterAndSubjectCourses;
+import main.java.structure.Subject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import main.java.structure.Clazz;
-import main.java.structure.Semester;
-import main.java.structure.SemesterAndSubjectCourses;
-import main.java.structure.Subject;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Scrapes the offered courses for the desired semester + subject.

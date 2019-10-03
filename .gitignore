@@ -4,7 +4,8 @@ sem_*.py
 sem_*.pyc
 *.ini
 database_desc.txt
-/scraping/*.php
+/scraping/**/*.php
+*.idea/
 /scraping_bk/
 *.png
 *.classpath
@@ -14,3 +15,4 @@ database_desc.txt
 /scraping/banweb_to_java/target/
 /resources/server_config.ini
 /resources/mysql_config.ini
+
